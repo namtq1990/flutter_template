@@ -1,0 +1,3 @@
+[submodule "packages/flutter_mlog"]
+	path = packages/flutter_mlog
+	url = https://github.com/namtq1990/flutter_mlog.git

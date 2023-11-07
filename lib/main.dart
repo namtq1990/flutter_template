@@ -1,6 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_mlog/flutter_mlog.dart';
+
+// @riverpod
+// String hello(HelloRef ref) {
+//   return "Hello World";
+// }
 
 void main() {
+  Calculator c = Calculator();
+  log( "Calculated: ${c.addOne(0)}");
   runApp(const MyApp());
 }
 
