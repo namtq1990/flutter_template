@@ -1,3 +1,6 @@
-[submodule "packages/flutter_mlog"]
-	path = packages/flutter_mlog
-	url = https://github.com/namtq1990/flutter_mlog.git
+[submodule "packages/flutter_nslog"]
+	path = packages/flutter_nslog
+	url = https://github.com/namtq1990/flutter_nslog.git
+[submodule "packages/flutter_nscore"]
+	path = packages/flutter_nscore
+	url = https://github.com/namtq1990/flutter_nscore.git
