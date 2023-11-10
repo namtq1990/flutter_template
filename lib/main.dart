@@ -3,27 +3,30 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:flutter_mlog/flutter_mlog.dart';
 
-// @riverpod
-// String hello(HelloRef ref) {
-//   return "Hello World";
-// }
+part 'main.g.dart';
 
-void main() {
-  Calculator c = Calculator();
-  log( "Calculated: ${c.addOne(0)}");
-  runApp(const MyApp());
+@riverpod
+String hello(HelloRef ref) {
+  return "Hello World";
 }
 
-class MyApp extends StatelessWidget {
+void main() {
+  runApp(
+      const ProviderScope(child: MyApp())
+  );
+}
+
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final String hello = ref.watch(helloProvider);
+
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: hello,
       theme: ThemeData(
         // This is the theme of your application.
         //
