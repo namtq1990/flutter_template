@@ -1,13 +1,15 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_nscore/share/dep/core.dart';
+import 'package:flutter_nscore/share/dep/arch.dart';
+import 'package:flutter_nscore/core_app.dart';
 
 part 'main.g.dart';
 
 @riverpod
 String hello(HelloRef ref) {
+  NLog.d("Init hello module");
   return "Hello World";
 }
 
@@ -23,6 +25,8 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: unused_local_variable
+    final app = ref.watch(appProvider);   // Force app to be initialized
     final String hello = ref.watch(helloProvider);
 
     return MaterialApp(

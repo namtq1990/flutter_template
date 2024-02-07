@@ -4,3 +4,6 @@
 [submodule "packages/flutter_nscore"]
 	path = packages/flutter_nscore
 	url = https://github.com/namtq1990/flutter_nscore.git
+[submodule "packages/ns_shared_versions"]
+	path = packages/ns_shared_versions
+	url = https://github.com/namtq1990/ns_shared_versions.git
