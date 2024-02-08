@@ -15,7 +15,7 @@ String hello(HelloRef ref) {
 
 void main() {
   runApp(
-      const ProviderScope(child: MyApp())
+      CoreApp.makeApp(child: const MyApp())
   );
 }
 
@@ -25,8 +25,6 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ignore: unused_local_variable
-    final app = ref.watch(appProvider);   // Force app to be initialized
     final String hello = ref.watch(helloProvider);
 
     return MaterialApp(
