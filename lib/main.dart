@@ -1,9 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_nscore/share/dep/core.dart';
 import 'package:flutter_nscore/share/dep/arch.dart';
 import 'package:flutter_nscore/core_app.dart';
+import 'package:hello_flutter/theme/domain/model/theme.dart';
+import 'package:hello_flutter/theme/share/app_theme.dart';
 
 part 'main.g.dart';
 
@@ -27,27 +27,17 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String hello = ref.watch(helloProvider);
 
+    // final theme = ThemeData(
+    //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
+    //   useMaterial3: true,
+    // );
+    final IAppTheme theme = AppTheme();
+
     return MaterialApp(
       title: hello,
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: theme.light(),
+      darkTheme: theme.dark(),
+      themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
