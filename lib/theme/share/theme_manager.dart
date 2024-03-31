@@ -7,7 +7,7 @@ import 'app_text_styles.dart';
 import 'app_text_theme.dart';
 
 
-class AppTheme implements IAppTheme {
+class ThemeManager implements IAppTheme {
 
   static final normalTheme = ThemeData(
     brightness: Brightness.light,

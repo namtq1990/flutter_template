@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_nscore/share/dep/core.dart';
 import 'package:flutter_nscore/share/dep/arch.dart';
 import 'package:flutter_nscore/core_app.dart';
 import 'package:hello_flutter/theme/domain/model/theme.dart';
-import 'package:hello_flutter/theme/share/app_theme.dart';
-
-part 'main.g.dart';
-
-@riverpod
-String hello(HelloRef ref) {
-  NLog.d("Init hello module");
-  return "Hello World";
-}
+import 'package:hello_flutter/theme/domain/provider/theme_provider.dart';
 
 void main() {
   runApp(
@@ -25,16 +16,14 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final String hello = ref.watch(helloProvider);
 
     // final theme = ThemeData(
     //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
     //   useMaterial3: true,
     // );
-    final IAppTheme theme = AppTheme();
+    final IAppTheme theme = ref.watch(themeManagerProvider);
 
     return MaterialApp(
-      title: hello,
       theme: theme.light(),
       darkTheme: theme.dark(),
       themeMode: ThemeMode.dark,
