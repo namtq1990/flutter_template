@@ -3,6 +3,7 @@ import 'package:flutter_nscore/share/dep/arch.dart';
 import 'package:flutter_nscore/core_app.dart';
 import 'package:hello_flutter/theme/domain/model/theme.dart';
 import 'package:hello_flutter/theme/domain/provider/theme_provider.dart';
+import 'package:hello_flutter/theme/share/theme_manager.dart';
 
 void main() {
   runApp(
@@ -17,16 +18,13 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    // final theme = ThemeData(
-    //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
-    //   useMaterial3: true,
-    // );
-    final IAppTheme theme = ref.watch(themeManagerProvider);
+    final IAppTheme themeMgr = ref.watch(themeProvider);
+    final theme = themeMgr.currentTheme();
 
     return MaterialApp(
-      theme: theme.light(),
-      darkTheme: theme.dark(),
-      themeMode: ThemeMode.dark,
+      theme: themeMgr.buildLight(theme),
+      darkTheme: themeMgr.buildDark(theme),
+      themeMode: themeMgr.currentMode(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -83,8 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
